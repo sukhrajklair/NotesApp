@@ -25,4 +25,8 @@ C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csproj.Copy
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.exe
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.pdb
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NotebookComponent.g.cs
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NotebookComponent.baml
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NoteComponent.g.cs
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NoteComponent.baml

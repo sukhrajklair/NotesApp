@@ -84,6 +84,12 @@
     </Compile>
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\NotesVM.cs" />
+    <Compile Include="View\Components\NotebookComponent.xaml.cs">
+      <DependentUpon>NotebookComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Components\NoteComponent.xaml.cs">
+      <DependentUpon>NoteComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -122,6 +128,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\Components\NotebookComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Components\NoteComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
