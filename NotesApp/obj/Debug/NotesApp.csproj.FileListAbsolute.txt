@@ -1,4 +1,3 @@
-C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Login.g.cs
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Notes.g.cs
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\App.g.cs
@@ -26,3 +25,4 @@ C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csproj.Copy
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.exe
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.pdb
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache

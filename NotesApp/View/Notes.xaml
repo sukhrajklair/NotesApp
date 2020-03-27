@@ -67,6 +67,15 @@
                     <TextBlock Text="U"
                                TextDecorations="Underline"/>
                 </ToggleButton>
+                <ComboBox x:Name="fontFamilyComboBox"
+                          Width="100"
+                          SelectionChanged="fontFamilyComboBox_SelectionChanged"
+                          />
+                <ComboBox x:Name="fontSizeComboBox"
+                          Width="50"
+                          IsEditable="True"
+                          TextBoxBase.SelectionChanged="fontSizeComboBox_SelectionChanged"
+                          />
             </ToolBar>
         </ToolBarTray>
         <Grid>
