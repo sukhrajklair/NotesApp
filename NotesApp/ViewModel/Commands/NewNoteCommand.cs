@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace NotesApp.ViewModel.Commands
 {
-    class NewNoteCommand : ICommand
+    public class NewNoteCommand : ICommand
     {
         public NotesVM VM { get; set; }
 

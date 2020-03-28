@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotesApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,17 +8,16 @@ using System.Windows.Input;
 
 namespace NotesApp.ViewModel.Commands
 {
-    public class NewNotebookCommand : ICommand
+    public class HasEditedCommand : ICommand
     {
         public NotesVM VM { get; set; }
 
         public event EventHandler CanExecuteChanged;
 
-        public NewNotebookCommand(NotesVM vm)
+        public HasEditedCommand(NotesVM vm)
         {
             VM = vm;
         }
-
         public bool CanExecute(object parameter)
         {
             return true;
@@ -25,8 +25,8 @@ namespace NotesApp.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            VM.CreateNotebook();
+            Notebook notebook = parameter as Notebook;
+            VM.HasRenamed(notebook);
         }
     }
 }
-

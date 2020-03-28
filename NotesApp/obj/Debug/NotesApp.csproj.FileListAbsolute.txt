@@ -27,6 +27,10 @@ C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.pdb
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NotebookComponent.g.cs
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NotebookComponent.baml
-C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NoteComponent.g.cs
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\View\Components\NoteComponent.baml
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\System.Windows.Interactivity.xml

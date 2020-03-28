@@ -57,5 +57,7 @@ namespace NotesApp.ViewModel
 			}
 		}
 
+		
+
 	}
 }

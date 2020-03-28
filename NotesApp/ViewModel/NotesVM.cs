@@ -3,17 +3,30 @@ using NotesApp.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace NotesApp.ViewModel
 {
-    class NotesVM
+    public class NotesVM : INotifyPropertyChanged
     {
+        private Visibility isEditing;
+        public Visibility IsEditing 
+        { get { return isEditing; } 
+          set
+            {
+                isEditing = value;
+                OnPropertyChanged("IsEditing");
+            }
+        }
+
         public ObservableCollection<Notebook> Notebooks { get; set; }
 
         private Notebook selectedNotebook;
+
         public Notebook SelectedNotebook
         {
             get { return selectedNotebook; }
@@ -30,16 +43,32 @@ namespace NotesApp.ViewModel
 
         public NewNoteCommand NewNoteCommand { get; set; }
 
+        public BeginEditCommand BeginEditCommand { get; set; }
+
+        public HasEditedCommand HasEditedCommand { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public NotesVM()
         {
+            isEditing = Visibility.Collapsed;
+
             NewNotebookCommand = new NewNotebookCommand(this);
             NewNoteCommand = new NewNoteCommand(this);
+            BeginEditCommand = new BeginEditCommand(this);
+            HasEditedCommand = new HasEditedCommand(this);
 
             Notebooks = new ObservableCollection<Notebook>();
             Notes = new ObservableCollection<Note>();
 
             ReadNotebooks();
             ReadNotes();
+        }
+
+        private void OnPropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
 
         public void CreateNote(int notebookId)
@@ -99,5 +128,23 @@ namespace NotesApp.ViewModel
                 }    
             }
         }
+
+        public void StartEditing()
+        {
+            IsEditing = Visibility.Visible;
+        }
+
+        public void HasRenamed(Notebook notebook)
+        {
+            if(notebook != null)
+            {
+                DatabaseHelper.Update(notebook);
+                IsEditing = Visibility.Collapsed;
+                ReadNotebooks();
+            }
+            
+        }
+
+
     }
 }

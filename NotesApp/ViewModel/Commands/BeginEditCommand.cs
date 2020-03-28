@@ -7,17 +7,16 @@ using System.Windows.Input;
 
 namespace NotesApp.ViewModel.Commands
 {
-    public class NewNotebookCommand : ICommand
+    public class BeginEditCommand : ICommand
     {
         public NotesVM VM { get; set; }
 
         public event EventHandler CanExecuteChanged;
 
-        public NewNotebookCommand(NotesVM vm)
+        public BeginEditCommand(NotesVM vm)
         {
             VM = vm;
         }
-
         public bool CanExecute(object parameter)
         {
             return true;
@@ -25,8 +24,7 @@ namespace NotesApp.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            VM.CreateNotebook();
+            VM.StartEditing();
         }
     }
 }
-
