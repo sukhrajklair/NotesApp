@@ -12,7 +12,7 @@
     <Window.Resources>
         <vm:NotesVM x:Key="vm"/>
     </Window.Resources>
-    <DockPanel DataContext="{StaticResource vm}">
+    <DockPanel x:Name="Container">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="New Notebook"
@@ -62,7 +62,9 @@
         </ListView>
         <ListView Width="140"
                   DockPanel.Dock="Left"
-                  ItemsSource="{Binding Notes}">
+                  ItemsSource="{Binding Notes}"
+                  SelectedItem="{Binding SelectedNote}"
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <uc:NoteComponent Note="{Binding}"/>
@@ -98,6 +100,10 @@
                           IsEditable="True"
                           TextBoxBase.SelectionChanged="fontSizeComboBox_SelectionChanged"
                           />
+                <Button x:Name="SaveFileButton"
+                        Content="Save"
+                        Click ="SaveFileButton_Click"
+                        />
             </ToolBar>
         </ToolBarTray>
         <Grid>

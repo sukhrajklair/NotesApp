@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NotesApp.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Speech.Recognition;
 using System.Text;
@@ -23,10 +25,15 @@ namespace NotesApp.View
     public partial class Notes : Window
     {
         SpeechRecognitionEngine recognizer;
+        NotesVM viewModel;
 
         public Notes()
         {
             InitializeComponent();
+
+            viewModel = new NotesVM();
+            Container.DataContext = viewModel;
+            viewModel.SelectedNoteChanged += ViewModel_SelectedNoteChanged;
 
             //the following statements setup the speech recognizer
             //get the current culture from windows
@@ -46,6 +53,18 @@ namespace NotesApp.View
 
             List<double> fontSizes = new List<double> { 8, 9, 10, 11, 12, 13, 14, 16 };
             fontSizeComboBox.ItemsSource = fontSizes;
+        }
+
+        private void ViewModel_SelectedNoteChanged(object sender, EventArgs e)
+        {
+            contentRichTextBox.Document.Blocks.Clear();
+            if ((viewModel.SelectedNote !=null) && !string.IsNullOrEmpty(viewModel.SelectedNote.FileLocation))
+            {
+                FileStream fileStream = new FileStream(viewModel.SelectedNote.FileLocation, FileMode.Open);
+                TextRange range = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd);
+                range.Load(fileStream, DataFormats.Rtf);
+                fileStream.Close();
+            }
         }
 
         //add the recognized speech to text
@@ -179,6 +198,20 @@ namespace NotesApp.View
                 Login login = new Login();
                 login.ShowDialog();
             }
+        }
+
+        private void SaveFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            string rtfFIle = System.IO.Path.Combine(Environment.CurrentDirectory, $"{viewModel.SelectedNote.Id}.rtf");
+            viewModel.SelectedNote.FileLocation = rtfFIle;
+
+            //Create new file if it doesn't exist or override the existing file
+            FileStream fileStream = new FileStream(rtfFIle, FileMode.Create);
+            TextRange range = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd);
+            range.Save(fileStream, DataFormats.Rtf);
+            fileStream.Close();
+            viewModel.UpdateSelectedNote();
+                        
         }
     }
 }

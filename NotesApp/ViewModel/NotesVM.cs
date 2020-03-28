@@ -37,6 +37,18 @@ namespace NotesApp.ViewModel
             }
         }
 
+        private Note selectedNote;
+
+        public Note SelectedNote
+        {
+            get { return selectedNote; }
+            set 
+            { 
+                selectedNote = value;
+                SelectedNoteChanged(this, new EventArgs());
+            }
+        }
+
         public ObservableCollection<Note> Notes { get; set; }
 
         public NewNotebookCommand  NewNotebookCommand { get; set; }
@@ -48,6 +60,8 @@ namespace NotesApp.ViewModel
         public HasEditedCommand HasEditedCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public event EventHandler SelectedNoteChanged;
 
         public NotesVM()
         {
@@ -145,6 +159,9 @@ namespace NotesApp.ViewModel
             
         }
 
-
+        public void UpdateSelectedNote()
+        {
+            DatabaseHelper.Update(SelectedNote);
+        }
     }
 }
