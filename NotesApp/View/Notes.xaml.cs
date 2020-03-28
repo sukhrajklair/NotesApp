@@ -170,6 +170,15 @@ namespace NotesApp.View
             fontSizeComboBox.Text = (contentRichTextBox.Selection.GetPropertyValue(Inline.FontSizeProperty)).ToString();
         }
 
-        
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+
+            if(string.IsNullOrEmpty(App.UserId))
+            {
+                Login login = new Login();
+                login.ShowDialog();
+            }
+        }
     }
 }

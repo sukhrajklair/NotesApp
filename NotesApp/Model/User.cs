@@ -27,7 +27,11 @@ namespace NotesApp.Model
 		public string FirstName
 		{
 			get { return firstName; }
-			set { firstName = value; }
+			set 
+			{ 
+				firstName = value;
+				OnPropertyChanged("FirstName");
+			}
 		}
 
 		private string lastName;

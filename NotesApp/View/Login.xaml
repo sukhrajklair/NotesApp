@@ -4,9 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotesApp.View"
+        xmlns:vm ="clr-namespace:NotesApp.ViewModel"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
-    <Grid>
-        
+        Title="Login" Height="400" Width="300">
+    <Window.Resources>
+        <vm:LoginVM x:Key="login"/>
+    </Window.Resources>
+    <Grid x:Name="containerGrid">
+        <StackPanel x:Name="LoginStackPanel"
+                    Margin="20 0"
+                    VerticalAlignment="Center"
+                    >
+            <Label Content="Username" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.Username, Mode=TwoWay}"/>
+            <Label Content="Password" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.Password, Mode=TwoWay}"
+                     />
+            <Button Margin="0 5 0 0"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding User}"
+                    Content="Login"/>
+            <Button x:Name="CreateAccountButton"
+                    Content="Create New Account"
+                    HorizontalAlignment="Right"
+                    Margin="0 5 0 0"
+                    Click="CreateAccountButton_Click"
+                    />
+        </StackPanel>
+        <StackPanel x:Name="RegisterStackPanel"
+                    Margin="20 0"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    >
+            <Label Content="First Name" FontSize="10"/>
+            <TextBox Text="{Binding User.FirstName, Mode=TwoWay}"
+                     />
+            <Label Content="Last Name" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.LastName, Mode=TwoWay}"
+                     />
+            <Label Content="Email" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.Email, Mode=TwoWay}"
+                     />
+            <Label Content="Username" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.Username, Mode=TwoWay}"
+                     />
+            <Label Content="Password" FontSize="10" Margin="0 5 0 0"/>
+            <TextBox Text="{Binding User.Password, Mode=TwoWay}"
+                     />
+            <Button Margin="0 5 0 0"
+                    Command="{Binding RegisterCommand}"
+                    CommandParameter="{Binding User}"
+                    Content="Register"/>
+            <Button x:Name="ExistingAccountButton"
+                    Content="I have an account"
+                    HorizontalAlignment="Right"
+                    Margin="0 5 0 0"
+                    Click="ExistingAccountButton_Click"
+                    />
+        </StackPanel>
     </Grid>
 </Window>
