@@ -13,7 +13,20 @@ namespace NotesApp
     /// </summary>
     public partial class App : Application
     {
-        public static string UserId = string.Empty;
+        private static string userId;
+
+        public static string UserId
+        {
+            get { return userId; }
+            set { 
+                userId = value;
+                HasLoggedIn(null, new EventArgs());
+            }
+        }
+
+        public static event EventHandler HasLoggedIn;
+
+
 
     }
 }

@@ -25,10 +25,10 @@ namespace NotesApp.View
             InitializeComponent();
             LoginVM vm = new LoginVM();
             containerGrid.DataContext = vm;
-            vm.HasLoggedIn += Vm_HasLoggedIn;
+            App.HasLoggedIn += App_HasLoggedIn;
         }
 
-        private void Vm_HasLoggedIn(object sender, EventArgs e)
+        private void App_HasLoggedIn(object sender, EventArgs e)
         {
             this.Close();
         }

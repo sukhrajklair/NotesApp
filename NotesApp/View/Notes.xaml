@@ -7,10 +7,12 @@
         xmlns:local="clr-namespace:NotesApp.View"
         xmlns:vm ="clr-namespace:NotesApp.ViewModel"
         xmlns:uc ="clr-namespace:NotesApp.View.Components"
+        xmlns:cv ="clr-namespace:NotesApp.ViewModel.Converter"
         mc:Ignorable="d"
         Title="Notes" Height="400" Width="600">
     <Window.Resources>
         <vm:NotesVM x:Key="vm"/>
+        <cv:BoolToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
     <DockPanel x:Name="Container">
         <Menu DockPanel.Dock="Top">
@@ -30,37 +32,54 @@
                 <TextBlock x:Name="statusTextBlock"/>
             </StatusBarItem>
         </StatusBar>
-        <ListView Width="140"
-                  Background="MidnightBlue"
-                  DockPanel.Dock="Left"
-                  SelectedItem="{Binding SelectedNotebook, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding Notebooks}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <uc:NotebookComponent Notebook="{Binding}" />
-                        <TextBox Text="{Binding Name, Mode=TwoWay}" 
-                                 Visibility="{Binding Source={StaticResource vm}, Path=IsEditing}">
-                            <!--The following additional xaml is needed to bind the LostFocus event to HasEditedCommand since 
-                            TextBox doesn't come with Command interface. Need to download system.windows.interactivity package-->
-                            <b:Interaction.Triggers>
-                                <b:EventTrigger EventName="LostFocus">
-                                    <b:InvokeCommandAction Command="{Binding Source={StaticResource vm}, Path=HasEditedCommand}"
-                                                           CommandParameter="{Binding}"/>
-                                </b:EventTrigger>
-                            </b:Interaction.Triggers>
-                        </TextBox>
-                        <Grid.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Rename" 
-                                          Command="{Binding Source={StaticResource vm}, Path=BeginEditCommand}"/>
-                            </ContextMenu>
-                        </Grid.ContextMenu>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ListView Width="140"
+        <StackPanel>
+            <ListView Width="Auto"
+                      Background="MidnightBlue"
+                      DockPanel.Dock="Left"
+                      SelectedItem="{Binding SelectedNotebook, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ItemsSource="{Binding Notebooks}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <Grid DockPanel.Dock="Left">
+                                <uc:NotebookComponent Notebook="{Binding}"/>
+                                <TextBox Text="{Binding Name, Mode=TwoWay}" 
+                                         Visibility="{Binding IsEditing, Converter={StaticResource BoolToVis}}">
+                                    <!--The following additional xaml is needed to bind the LostFocus event to HasEditedCommand since 
+                                    TextBox doesn't come with Command interface. Need to download system.windows.interactivity package-->
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="LostFocus">
+                                            <b:InvokeCommandAction Command="{Binding Source={StaticResource vm}, Path=HasEditedCommand}"
+                                                                   CommandParameter="{Binding}"/>
+                                        </b:EventTrigger>
+                                    </b:Interaction.Triggers>
+                                </TextBox>
+                            </Grid>
+                            <Button Height="20"
+                                    Width="20"
+                                    DockPanel.Dock="Right"
+                                    Command="{Binding Source={StaticResource vm}, Path=BeginEditCommand}"
+                                    CommandParameter="{Binding}"
+                                >
+                                <Image Source="edit.png"/>
+                            </Button>
+                            <Button Height="20"
+                                    Width="20"
+                                    DockPanel.Dock="Right"
+                                    Command="{Binding Source={StaticResource vm}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    >
+                                <Image Source="delete.png"/>
+                            </Button>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="New Notebook"
+                        Command="{Binding Source={StaticResource vm}, Path=NewNotebookCommand}"/>
+        </StackPanel>
+        <StackPanel>
+            <ListView Width="Auto"
                   DockPanel.Dock="Left"
                   ItemsSource="{Binding Notes}"
                   SelectedItem="{Binding SelectedNote}"
@@ -71,6 +90,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+            <Button Content="New Note"
+                    Command="{Binding Source={StaticResource vm}, Path=NewNoteCommand}"
+                    CommandParameter="{Binding Source={StaticResource vm}, Path=SelectedNotebook, Mode=TwoWay}" />
+        </StackPanel>
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <ToggleButton x:Name="speechButton"

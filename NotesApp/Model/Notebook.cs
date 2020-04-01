@@ -45,6 +45,17 @@ namespace NotesApp.Model
 			}
 		}
 
+		private bool isEditing;
+		[Ignore]
+		public bool IsEditing
+		{
+			get { return isEditing; }
+			set { 
+				isEditing = value;
+				OnPropertyChanged("IsEditing");
+			}
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private void OnPropertyChanged(string propertyName)

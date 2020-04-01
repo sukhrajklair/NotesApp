@@ -31,9 +31,11 @@ namespace NotesApp.View
         {
             InitializeComponent();
 
-            viewModel = new NotesVM();
+            //the view model is instantiated in the xaml as a resource
+            viewModel = (NotesVM)FindResource("vm");
             Container.DataContext = viewModel;
             viewModel.SelectedNoteChanged += ViewModel_SelectedNoteChanged;
+            App.HasLoggedIn += App_HasLoggedIn;
 
             //the following statements setup the speech recognizer
             //get the current culture from windows
@@ -53,6 +55,12 @@ namespace NotesApp.View
 
             List<double> fontSizes = new List<double> { 8, 9, 10, 11, 12, 13, 14, 16 };
             fontSizeComboBox.ItemsSource = fontSizes;
+        }
+
+        private void App_HasLoggedIn(object sender, EventArgs e)
+        {
+            viewModel.ReadNotebooks();
+            viewModel.ReadNotes();
         }
 
         private void ViewModel_SelectedNoteChanged(object sender, EventArgs e)

@@ -8,13 +8,13 @@ using System.Windows.Input;
 
 namespace NotesApp.ViewModel.Commands
 {
-    public class BeginEditCommand : ICommand
+    public class HasEditedNotebookCommand : ICommand
     {
         public NotesVM VM { get; set; }
 
         public event EventHandler CanExecuteChanged;
 
-        public BeginEditCommand(NotesVM vm)
+        public HasEditedNotebookCommand(NotesVM vm)
         {
             VM = vm;
         }
@@ -26,7 +26,7 @@ namespace NotesApp.ViewModel.Commands
         public void Execute(object parameter)
         {
             Notebook notebook = parameter as Notebook;
-            VM.StartEditing(notebook);
+            VM.HasRenamed(notebook);
         }
     }
 }

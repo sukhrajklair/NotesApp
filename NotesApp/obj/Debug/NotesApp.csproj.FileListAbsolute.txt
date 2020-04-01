@@ -33,3 +33,4 @@ C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\Microsoft.Expression
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\sukhr\Desktop\Study\C#\NotesApp\NotesApp\obj\Debug\NotesApp.csprojAssemblyReference.cache

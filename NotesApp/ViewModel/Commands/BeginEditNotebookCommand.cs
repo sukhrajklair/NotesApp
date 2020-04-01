@@ -8,13 +8,13 @@ using System.Windows.Input;
 
 namespace NotesApp.ViewModel.Commands
 {
-    public class BeginEditCommand : ICommand
+    public class BeginEditNotebookCommand : ICommand
     {
         public NotesVM VM { get; set; }
 
         public event EventHandler CanExecuteChanged;
 
-        public BeginEditCommand(NotesVM vm)
+        public BeginEditNotebookCommand(NotesVM vm)
         {
             VM = vm;
         }

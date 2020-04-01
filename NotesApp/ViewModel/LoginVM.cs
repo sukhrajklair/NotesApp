@@ -37,8 +37,7 @@ namespace NotesApp.ViewModel
 
 				if(user.Password == User.Password)
 				{
-					App.UserId = user.Id.ToString();
-					HasLoggedIn(this, new EventArgs());
+					App.UserId = user.Id.ToString();					
 				}
 			}
 		}
@@ -51,8 +50,7 @@ namespace NotesApp.ViewModel
 				var result = DatabaseHelper.Insert<User>(User);
 				if (result)
 				{
-					App.UserId = user.Id.ToString();
-					HasLoggedIn(this, new EventArgs());
+					App.UserId = user.Id.ToString();				
 				}
 			}
 		}
